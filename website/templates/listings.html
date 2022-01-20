@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<div class="card mx-auto w-75 my-5">
+    <h1 class="card-header card-title text-center display-4">Inventory</h1>
+    <a href="/"><button type="button" class="btn btn-primary m-2">Home</button></a>
+    <a href="/new-listing"><button type="button" class="btn btn-primary m-2">Add New Listing</button></a>
+    <div class="card-body">
+        <table class="table table-hover table-responsive">
+        <thead>
+            <tr>
+            <th scope="col">Name</th>
+            <th scope="col">Item Name</th>
+            <th scope="col">Description</th>
+            <th></th>
+            <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for item in context.inventory %}
+                <tr>
+                    <th scope="row">{{item.name}}</th>
+                    <td>{{item.item_name}}</td>
+                    <td>{{item.description}}</td>
+                    <td>
+                        <a href="/delete/{{item.name}}"><button type="button" class="btn btn-primary">Delete</button></a>
+                    </td>
+                    <td>
+                        <a href="/update/{{item.name}}"><button type="button" class="btn btn-primary">Edit</button></a>
+                    </td>
+                </tr>
+            {% endfor %}
+        </tbody>
+        </table>
+    </div>
+</div>
+
+{% endblock %}

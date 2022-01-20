@@ -1,0 +1,34 @@
+{% extends "base.html" %}
+
+{% block content %}
+	<div class="container-fluid w-75 h-100 rounded d-flex align-items-center">
+
+		<div class="w-75 mx-auto bg-light rounded p-5">
+			<h4>Add new item to inventory!</h4>
+			<div class="w-100">
+				<form method="POST" action="http://127.0.0.1:5000/new-listing">
+					<div class="row">
+						<div class="form-group col-md-6">
+							<input type="text" class="form-control" name="input_name" placeholder="Your Name">
+						</div>
+						<div class="form-group col-md-6">
+							<input type="tel" class="form-control" name="input_item_name" placeholder="Item Name">
+						</div>
+					</div>
+					<div class="row">
+						<div class="form-group col-md-6 pt-3">
+							<input type="text" class="form-control" name="input_description" placeholder="Description">
+						</div>
+					</div>
+
+
+					<div class="text-center mt-5">
+						<button type="submit" class="btn btn-success">Post my item!</button>
+                        <a href="/"><button type="submit" class="btn btn-success">Exit</button></a>
+					</div>
+				</form>
+			</div>
+		</div>		
+	</div>
+
+{% endblock %}
