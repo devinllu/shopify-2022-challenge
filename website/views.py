@@ -1,6 +1,7 @@
 from flask import Blueprint, render_template, request, redirect, url_for
 from .models import Item
 from . import db
+import csv
 
 views = Blueprint('views', __name__)
 
@@ -84,3 +85,26 @@ def update(id):
     item = Item.query.get(id)
 
     return render_template('update_listings.html', context=item)
+
+@views.route('/export')
+def export_to_csv():
+    q = db.session.query(Item)
+
+    file = 'data.csv'
+
+    with open(file, 'w') as csvfile:
+        outcsv = csv.writer(csvfile, delimiter=',',quotechar='"', quoting = csv.QUOTE_MINIMAL)
+
+        header = Item.__table__.columns.keys()
+
+        outcsv.writerow(header)     
+
+        for record in q.all():
+            outcsv.writerow([getattr(record, c) for c in header ])
+
+
+    context = {
+        "inventory": Item.query.all() 
+    }
+
+    return render_template('listings.html', context=context)
