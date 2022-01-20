@@ -34,10 +34,10 @@ def test_db():
 
 
 def create_fake_data(app):
-    a1 = Item(description="160kg, 60 bucks", name="Devin", item_name="Fridge")
-    a2 = Item(description="Black mask, need to sell!", name="Joe", item_name="Mask")
-    a3 = Item(description="Charizard rare pokemon card, $100k", name="John", item_name="Pokemon Cards")
-    a4 = Item(description="10kg chair, wooden, brown", name="Amelia", item_name="Chair")
+    a1 = Item(description="160kg, 60 bucks, note: this is automatic, default fake data", name="Devin", item_name="Fridge")
+    a2 = Item(description="Black mask, need to sell! note: this is automatic, default fake data", name="Joe", item_name="Mask")
+    a3 = Item(description="Charizard rare pokemon card, $100k note: this is automatic, default fake data", name="John", item_name="Pokemon Cards")
+    a4 = Item(description="10kg chair, wooden, brown note: this is automatic, default fake data", name="Amelia", item_name="Chair")
 
     lst = [a1, a2, a3, a4]
 
